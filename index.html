@@ -47,12 +47,10 @@
     // https://github.com/googlecreativelab/teachablemachine-community/tree/master/libraries/pose
 
     // the link to your model provided by Teachable Machine export panel
-    const URL = "https://teachablemachine.withgoogle.com/models/HLNT_5O0Y/";
+    const URL = "https://teachablemachine.withgoogle.com/models/ANSbuG0xv/";
     let model, webcam, ctx, labelContainer, maxPredictions;
 
     async function init() {
-        $(this).parent().parent().remove();
-
         const modelURL = URL + "model.json";
         const metadataURL = URL + "metadata.json";
 
