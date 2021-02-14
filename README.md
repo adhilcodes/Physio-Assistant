@@ -4,7 +4,7 @@
 
 GETFIT is a web app made with tensorflow.js to enable accessible physiotherapy for people exercises by responding to users' postures in real-time.
 
-TF.js API [link](https://teachablemachine.withgoogle.com/models/ANSbuG0xv/)
+TF.js API [link](https://teachablemachine.withgoogle.com/models/HLNT_5O0Y/)
 ......
 
 .....
