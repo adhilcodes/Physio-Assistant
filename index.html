@@ -1,14 +1,43 @@
 <html>
 <header>
- <h1 align=center>POSENET TEST</h1>   
+ <h1 align=center class="mt-5">GO FIT </h1>   
 </header>
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js" integrity="sha384-nsg8ua9HAw1y0W1btsyWgBklPnCUAFLuTMS2G72MMONqmOymq585AcH49TLBQObG" crossorigin="anonymous"></script>
+</head>
 <body>
-
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=EB+Garamond&display=swap');
+    header{
+        font-family: 'Bebas Neue', cursive;
+        font-weight: bolder;
+        color: white;
+    }
+    body{
+        background-image: url('bg-img.svg');
+    }
+    #label-container{
+        text-transform: uppercase;
+        color:red;
+        font-size: large;
+        font-family: 'EB Garamond', serif;
+    }
+    #canvas{
+        border-radius: 2rem;
+    }
+</style>
 <br>
 <div align=center>
-<div>Teachable Machine Pose Model</div>
-<br>
-<button type="button" onclick="init()">Start</button>
+    <div id="startDiv">
+        <div>Please click start button</div>
+<button type="button" class="btn btn-success mb-3" onclick="init()">Start</button>
+    </div>
+
+
 <div><canvas id="canvas"></canvas></div>
 <div id="label-container"></div>
 <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
@@ -22,6 +51,8 @@
     let model, webcam, ctx, labelContainer, maxPredictions;
 
     async function init() {
+        $(this).parent().parent().remove();
+
         const modelURL = URL + "model.json";
         const metadataURL = URL + "metadata.json";
 
@@ -64,7 +95,7 @@
 
         for (let i = 0; i < maxPredictions; i++) {
             const classPrediction =
-                prediction[i].className + ": " + prediction[i].probability.toFixed(2);
+                prediction[i].className + ": " + (prediction[i].probability*100).toFixed(2)+"%";
             labelContainer.childNodes[i].innerHTML = classPrediction;
         }
 
